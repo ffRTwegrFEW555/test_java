@@ -286,7 +286,6 @@ public class Summary {
 
         return x;
         // comment
-        // change
     }
 }
 
