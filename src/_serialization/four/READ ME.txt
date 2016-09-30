@@ -1,0 +1,10 @@
+//
+// Package "three" is copy "one",
+// but "implements Serialization" move to new Class
+// see how default constructors and default initializer work
+//
+// Result:
+// при десериализации, несериализуемые классы в родителях, инициализируются.
+// (Учесть, что класс считается сериализуемым, если наследуется от сериализуемого класса,
+// находящегося в любой иерархии родителей)
+//

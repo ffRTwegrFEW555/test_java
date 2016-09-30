@@ -1,0 +1,5 @@
+//
+// Package "two" is copy "one",
+// but "implements Serialization" move to new Class
+// see how default constructors and default initializer work
+//
