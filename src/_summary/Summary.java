@@ -283,9 +283,11 @@ public class Summary {
         x = x ^ y;
         printTextToBinary(x);
         System.out.println();
+        System.out.println();
 
         return x;
         // comment
+        // new
     }
 }
 
