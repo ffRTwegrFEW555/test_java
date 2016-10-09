@@ -7,5 +7,7 @@ public class MathTest {
     public static void main(String[] args) {
         System.out.println("Math.E: " + Math.E);
         System.out.println("Math.PI: " + Math.PI);
+
+        System.out.println(Math.ceil(1.1));
     }
 }
