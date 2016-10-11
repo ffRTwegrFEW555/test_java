@@ -13,7 +13,11 @@ import java.util.ArrayList;
  */
 public class _TestDrive {
     public static void main(String[] args) {
-        String htmlLink = "http://v-vannu.ru/section-tumbyi-dlya-vannoj/";
+        String htmlLink = "http://v-"
+                            + "va"
+                            + "nnu."
+                            + "ru"
+                            + "/section-tumbyi-dlya-vannoj/";
         Document html = null;
 
         try {
@@ -100,5 +104,7 @@ public class _TestDrive {
         }
 
         productCardCatalogs.forEach(System.out::println);
+
+        // TODO: check for null
     }
 }
