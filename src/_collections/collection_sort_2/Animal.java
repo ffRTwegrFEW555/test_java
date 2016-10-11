@@ -46,9 +46,9 @@ public abstract class Animal implements Comparable<Animal> {
 
     @Override
     public String toString() {
-        return "\n" +
-                "name: " + name + "; " +
-                "color: " + color + "; " +
-                "age: " + age + ";";
+        return "\n"
+                + "name: " + name + "; "
+                + "color: " + color + "; "
+                + "age: " + age + ";";
     }
 }

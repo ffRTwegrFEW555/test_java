@@ -42,9 +42,9 @@ public class _TestDrive {
         cats.add(cat13);
 
         for (Cat cat : cats) {
-            System.out.println("name: " + cat.getName() +
-                    "       color: " + cat.getColor() +
-                    "       age: " + cat.getAge());
+            System.out.println("name: " + cat.getName()
+                    + "       color: " + cat.getColor()
+                    + "       age: " + cat.getAge());
         }
 
         //
@@ -70,9 +70,9 @@ public class _TestDrive {
         cats2.add(cat13);
 
         for (Cat cat : cats2) {
-            System.out.println("name: " + cat.getName() +
-                                       "       color: " + cat.getColor() +
-                                       "       age: " + cat.getAge());
+            System.out.println("name: " + cat.getName()
+                    + "       color: " + cat.getColor()
+                    + "       age: " + cat.getAge());
         }
     }
 }

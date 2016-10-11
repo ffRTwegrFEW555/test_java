@@ -28,9 +28,9 @@ public class _TestDrive {
         cats.add(cat6);
 
         for (Cat cat : cats) {
-            System.out.println("name: " + cat.getName() +
-                    "       color: " + cat.getColor() +
-                    "       age: " + cat.getAge());
+            System.out.println("name: " + cat.getName()
+                    + "       color: " + cat.getColor()
+                    + "       age: " + cat.getAge());
         }
     }
 }
