@@ -1,12 +1,15 @@
 package _jsoup._test1;
 
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
+import org.jsoup.helper.HttpConnection;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by USER on 11.10.2016.
@@ -21,7 +24,32 @@ public class _TestDrive {
         Document html = null;
 
         try {
-            html = Jsoup.connect(htmlLink).get();
+            Connection con = Jsoup.connect(htmlLink);
+
+            // =======================
+            con.userAgent("Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36");
+            con.timeout(10000);
+            con.referrer("https://localhost/");
+            // =======================
+
+            html = con.get();
+            // or: html = Jsoup.connect(htmlLink).get();
+
+            // ==================================================================
+            Map<String, String> testResponse = con.response().headers();
+            for (Map.Entry pair : testResponse.entrySet()) {
+                System.out.println(pair.getKey() + "    " + pair.getValue());
+            }
+            System.out.println();
+
+            //
+            Map<String, String> testRequest = con.request().headers();
+            for (Map.Entry pair : testRequest.entrySet()) {
+                System.out.println(pair.getKey() + "    " + pair.getValue());
+            }
+            System.out.println();
+            // ==================================================================
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -31,7 +59,6 @@ public class _TestDrive {
         System.out.println();
 
         Element content = html.getElementsByClass("b-container__product-list").first();
-
 
         /*
             Parse links
@@ -43,6 +70,7 @@ public class _TestDrive {
         Elements linksProductsJ = content.select("a[href^=/product].product-cluster__title");
         for (Element link : linksProductsJ) {
             System.out.println(link.attr("abs:href"));
+            // or: System.out.println(link.absUrl("href"));
             System.out.println(link.text());
         }
         System.out.println();
@@ -51,6 +79,7 @@ public class _TestDrive {
         Elements linksPagesJ = content.select("a[href^=?&page=].b-link");
         for (Element link : linksPagesJ) {
             System.out.println(link.attr("abs:href"));
+            // or: System.out.println(link.absUrl("href"));
             System.out.println(link.text());
         }
         System.out.println();
@@ -74,29 +103,39 @@ public class _TestDrive {
         Elements products = content.select("div.product-cluster");
         for (Element element : products) {
             Element marketingStatus = element.select("div.product-cluster__marker").first();
-            String image            = element.select("img[src$=.jpg]").first().attr("abs:src");
+            Element image           = element.select("img[src$=.jpg]").first();
             Element available       = element.select("a.product-cluster__title").first();
-            String vendorCode       = element.select("div.product-cluster__code").first().text();
-            String name             = available.text();
-            String link             = available.attr("abs:href");
-            String price            = element.select("div.product-cluster__price").first().text().replaceAll(" ", "");
+            Element vendorCode      = element.select("div.product-cluster__code").first();
+            Element price           = element.select("div.product-cluster__price").first();
 
             ProductCardCatalog pcc = new ProductCardCatalog(
-                marketingStatus == null ? 0 : 1,
-                available.className().contains("product-cluster__title--in-stock") ? 1 : 3,
-                image,
-                vendorCode,
-                name,
-                link,
-                Integer.parseInt(price));
+                    marketingStatus == null ? 0 : 1,
+                    available   == null     ? 0 : available.classNames().contains("product-cluster__title--in-stock") ? 1 : 3,
+                    image       == null     ? "" : image.attr("abs:src"),
+                    vendorCode  == null     ? "" : vendorCode.text(),
+                    available   == null     ? "" : available.text(),
+                    available   == null     ? "" : available.attr("abs:href"),
+                    price       == null     ? 0 : Integer.parseInt(price.text().replaceAll(" ", "")));
 
             Element attributes      = element.select("div.product-cluster__attributes").first();
             if (attributes != null) {
                 Elements attributesToMap = attributes.children();
                 for (Element e : attributesToMap) {
+                    String eText = e.ownText();
+                    /*
+                        <div class="product-cluster__attribute">Страна: <span>Россия</span></div>
+                        .text() == "Страна: Россия";
+                        .ownText() == "Страна: ";
+                     */
+
                     String spanValue = e.children().text();
-                    String eText = e.text();
-                    pcc.putProperties(eText.substring(0, eText.length() - spanValue.length()), spanValue);
+                    if (eText == null || eText.equals("") || eText.equals(": ")) {
+                        continue;
+                    } else if (spanValue == null || spanValue.equals("")) {
+                        pcc.putProperties(eText, "");
+                    } else {
+                        pcc.putProperties(eText, spanValue);
+                    }
                 }
             }
 

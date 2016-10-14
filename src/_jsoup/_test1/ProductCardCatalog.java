@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public class ProductCardCatalog {
     private int marketingStatus;    // 0. null, 1. sale, 2. write-down, 3. stock, 4. novelty, 5. gift certificates;
-    private int available;         // 0. null, 1. available, 2. expected, 3. custom;
+    private int available;          // 0. null, 1. available, 2. expected, 3. custom;
 
     private String image;
     private String vendorCode;
