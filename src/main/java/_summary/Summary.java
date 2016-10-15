@@ -228,6 +228,9 @@ import java.util.Map;
  * Phaser
  * https://habrahabr.ru/post/117185/
  *
+ * apache maven tutorial по-русски
+ * http://www.apache-maven.ru/
+ *
  */
 public class Summary {
 
