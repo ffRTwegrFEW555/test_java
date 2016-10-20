@@ -231,6 +231,32 @@ import java.util.Map;
  * apache maven tutorial по-русски
  * http://www.apache-maven.ru/
  *
+ * Много чего о Java
+ * http://www.javable.com/docs/
+ *
+ * Автоматический перевод Java API 8
+ * http://spec-zone.ru/RU/Java/Docs/8/api/
+ *
+ * database in java
+ * book
+ * Practical Database Programming with Java
+ * Ying Bai (Author)
+ *
+ * Swing
+ * https://habrahabr.ru/post/137347/
+ *
+ * * components
+ * http://docs.oracle.com/javase/tutorial/uiswing/examples/components/index.html
+ * менеджеры компоновки
+ * http://comprice.ru/articles/detail.php?ID=42563&print=true
+ *
+ *
+ * GUI java
+ * http://eax.me/java-swing/
+ *
+ * JDBC Java
+ * http://www.quizful.net/post/using-jdbc
+ *
  */
 public class Summary {
 

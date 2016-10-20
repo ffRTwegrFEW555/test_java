@@ -78,6 +78,8 @@ public class BeatBox {
             // UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             // UIManager.setLookAndFeel(new com.sun.java.swing.plaf.motif.MotifLookAndFeel());
+            UIManager.LookAndFeelInfo[] infoArray =
+                    UIManager.getInstalledLookAndFeels();
         } catch (Exception e) {
             e.printStackTrace();
         }

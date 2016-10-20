@@ -1,4 +1,4 @@
-package _class;
+package _class.one;
 
 /**
  * Created by Vad on 25.06.2016.

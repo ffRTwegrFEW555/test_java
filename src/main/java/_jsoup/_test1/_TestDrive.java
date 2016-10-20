@@ -1,6 +1,7 @@
 package _jsoup._test1;
 
 import org.jsoup.Connection;
+import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.helper.HttpConnection;
 import org.jsoup.nodes.Document;
@@ -17,10 +18,10 @@ import java.util.Map;
 public class _TestDrive {
     public static void main(String[] args) {
         String htmlLink = "http://v-"
-                            + "va"
-                            + "nnu."
-                            + "ru"
-                            + "/section-tumbyi-dlya-vannoj/";
+                + "va"
+                + "nnu."
+                + "ru"
+                + "/section-tumbyi-dlya-vannoj/";
         Document html = null;
 
         try {
@@ -34,28 +35,101 @@ public class _TestDrive {
 
             html = con.get();
             // or: html = Jsoup.connect(htmlLink).get();
+            // (.get == .method(Connection.Method.GET).execute())
+            // (.post == .method(Connection.Method.POST).execute())
+
+            // ==============
+            System.out.println(con.response().statusCode());
+            System.out.println(con.response().statusMessage());
+            System.out.println();
+
+            Connection.Response response500 = null;
+            try {
+                response500 = Jsoup.connect(htmlLink + "?&page=400").method(Connection.Method.GET).execute();
+                System.out.println(response500.statusCode());
+                System.out.println(response500.statusMessage());
+            } catch (HttpStatusException e) {
+                System.out.println("Exception. Response status=" + e.getStatusCode());
+            } finally {
+                System.out.println();
+            }
+
+            Connection.Response response404 = null;
+            try {
+                response404 = Jsoup.connect(htmlLink + "e/").method(Connection.Method.GET).execute();
+                System.out.println(response404.statusCode());
+                System.out.println(response404.statusMessage());
+            } catch (HttpStatusException e) {
+                System.out.println("Exception. Response status=" + e.getStatusCode());
+            } finally {
+                System.out.println();
+            }
+            // ==============
 
             // ==================================================================
-            Map<String, String> testResponse = con.response().headers();
-            for (Map.Entry pair : testResponse.entrySet()) {
+            Map<String, String> reqCookies = con.request().cookies();
+            if (reqCookies.size() == 0) {
+                System.out.println(".request().cookies().size() == 0");
+            }
+            for (Map.Entry pair : reqCookies.entrySet()) {
                 System.out.println(pair.getKey() + "    " + pair.getValue());
             }
             System.out.println();
 
             //
-            Map<String, String> testRequest = con.request().headers();
-            for (Map.Entry pair : testRequest.entrySet()) {
+            Map<String, String> testRequestHeaders = con.request().headers();
+            for (Map.Entry pair : testRequestHeaders.entrySet()) {
                 System.out.println(pair.getKey() + "    " + pair.getValue());
             }
             System.out.println();
+
+            //
+            Map<String, String> testResponseHeaders = con.response().headers();
+            for (Map.Entry pair : testResponseHeaders.entrySet()) {
+                System.out.println(pair.getKey() + "    " + pair.getValue());
+            }
+            System.out.println();
+
+            //
+            Map<String, String> resCookies = con.response().cookies();
+            for (Map.Entry pair : resCookies.entrySet()) {
+                System.out.println(pair.getKey() + "    " + pair.getValue());
+            }
+            // Далее эти куки можно использовать в запросах, либо устанавливать свои,
+            // либо сохранить и потом восстановить где-нибудь.
+            System.out.println();
+
+            // again #1
+            reqCookies = con.request().cookies();
+            if (reqCookies.size() == 0) {
+                System.out.println(".request().cookies().size() == 0");
+            }
+            for (Map.Entry pair : reqCookies.entrySet()) {
+                System.out.println(pair.getKey() + "    " + pair.getValue());
+            }
+            System.out.println();
+            // Jsoup куки не сохраняет, необходимо вручную вставлять
+
+            // again #2
+            con.request().cookie("csrftokenn", "HwprjeYJ360kJUWTKkmZ8AoqQ63Q18TuDD");
+            con.cookies(resCookies);
+            reqCookies = con.request().cookies();
+            if (reqCookies.size() == 0) {
+                System.out.println(".request().cookies().size() == 0");
+            }
+            for (Map.Entry pair : reqCookies.entrySet()) {
+                System.out.println(pair.getKey() + "    " + pair.getValue());
+            }
+            System.out.println();
+            // Jsoup куки не сохраняет, необходимо вручную вставлять
             // ==================================================================
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println("URL: "      + html.baseUri());
-        System.out.println("Title: "    + html.title());
+        System.out.println("URL: " + html.baseUri());
+        System.out.println("Title: " + html.title());
         System.out.println();
 
         Element content = html.getElementsByClass("b-container__product-list").first();
@@ -103,21 +177,21 @@ public class _TestDrive {
         Elements products = content.select("div.product-cluster");
         for (Element element : products) {
             Element marketingStatus = element.select("div.product-cluster__marker").first();
-            Element image           = element.select("img[src$=.jpg]").first();
-            Element available       = element.select("a.product-cluster__title").first();
-            Element vendorCode      = element.select("div.product-cluster__code").first();
-            Element price           = element.select("div.product-cluster__price").first();
+            Element image = element.select("img[src$=.jpg]").first();
+            Element available = element.select("a.product-cluster__title").first();
+            Element vendorCode = element.select("div.product-cluster__code").first();
+            Element price = element.select("div.product-cluster__price").first();
 
             ProductCardCatalog pcc = new ProductCardCatalog(
                     marketingStatus == null ? 0 : 1,
-                    available   == null     ? 0 : available.classNames().contains("product-cluster__title--in-stock") ? 1 : 3,
-                    image       == null     ? "" : image.attr("abs:src"),
-                    vendorCode  == null     ? "" : vendorCode.text(),
-                    available   == null     ? "" : available.text(),
-                    available   == null     ? "" : available.attr("abs:href"),
-                    price       == null     ? 0 : Integer.parseInt(price.text().replaceAll(" ", "")));
+                    available == null ? 0 : available.classNames().contains("product-cluster__title--in-stock") ? 1 : 3,
+                    image == null ? "" : image.attr("abs:src"),
+                    vendorCode == null ? "" : vendorCode.text(),
+                    available == null ? "" : available.text(),
+                    available == null ? "" : available.attr("abs:href"),
+                    price == null ? 0 : Integer.parseInt(price.text().replaceAll(" ", "")));
 
-            Element attributes      = element.select("div.product-cluster__attributes").first();
+            Element attributes = element.select("div.product-cluster__attributes").first();
             if (attributes != null) {
                 Elements attributesToMap = attributes.children();
                 for (Element e : attributesToMap) {
@@ -144,6 +218,6 @@ public class _TestDrive {
 
         productCardCatalogs.forEach(System.out::println);
 
-        // TODO: check for null
+        // TODO: check for null; add support xlsx, sqlite, mysql, javaFX, Swing, + executable file.
     }
 }
