@@ -18,12 +18,10 @@ public class Controller {
 
         //Schedule a job for the event-dispatching thread:
         //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                GUI gui = TypeGUI.getGUIObject(typeGUI);
-                if (gui != null) {
-                    gui.createAndShowGUI(new Model(gui));
-                }
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            GUI gui = TypeGUI.getGUIObject(typeGUI);
+            if (gui != null) {
+                gui.createAndShowGUI(new Model(gui));
             }
         });
     }

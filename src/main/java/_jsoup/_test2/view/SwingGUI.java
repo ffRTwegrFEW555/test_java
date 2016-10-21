@@ -22,17 +22,14 @@ class SwingGUI extends GUI {
             JLabel label = new JLabel("Label: " + Math.random());
             add(label);
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    while (true) {
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        label.setText("Label: " + Math.random());
+            new Thread(() -> {
+                while (true) {
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
+                    label.setText("Label: " + Math.random());
                 }
             }).start();
         }
@@ -48,15 +45,12 @@ class SwingGUI extends GUI {
                     LookAndFeel laf = (LookAndFeel) (lnfClass.newInstance());
                     if (laf.isSupportedLookAndFeel()) {
                         JMenuItem menuItemLAF = new JMenuItem(lafInfo.getName());
-                        menuItemLAF.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                try {
-                                    UIManager.setLookAndFeel(laf);
-                                    SwingUtilities.updateComponentTreeUI(frame);
-                                } catch (UnsupportedLookAndFeelException e1) {
-                                    e1.printStackTrace();
-                                }
+                        menuItemLAF.addActionListener(e -> {
+                            try {
+                                UIManager.setLookAndFeel(laf);
+                                SwingUtilities.updateComponentTreeUI(frame);
+                            } catch (UnsupportedLookAndFeelException e1) {
+                                e1.printStackTrace();
                             }
                         });
                         add(menuItemLAF);
@@ -71,11 +65,7 @@ class SwingGUI extends GUI {
 
     @Override
     protected void startGUI() {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                buildAndShowGUI();
-            }
-        });
+        javax.swing.SwingUtilities.invokeLater(this::buildAndShowGUI);
     }
 
     private void buildAndShowGUI() {
@@ -113,12 +103,12 @@ class SwingGUI extends GUI {
     private JMenuBar createMenuBar() {
         // TODO: pictures on menuItems
 
-        JMenuBar menuBar    = new JMenuBar();
+        JMenuBar menuBar = new JMenuBar();
 
         // menu standard
         //
         JMenu menu = new JMenu("Menu");
-        menu.setMnemonic    (KeyEvent.VK_M);
+        menu.setMnemonic (KeyEvent.VK_M);
 
         // submenu
         JMenu submenu = new JMenu("+ Add new parser tab");
@@ -129,24 +119,14 @@ class SwingGUI extends GUI {
         StrategySet[] menuItemsSet = StrategySet.values();
         for (StrategySet value : menuItemsSet) {
             menuItemParser = new JMenuItem(value.getName());
-            menuItemParser.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    tabbedPane.addTab(value.getName(), new ParsePanel());
-                }
-            });
+            menuItemParser.addActionListener(e -> tabbedPane.addTab(value.getName(), new ParsePanel()));
             submenu.add(menuItemParser);
         }
 
         // quit
         JMenuItem menuItem = new JMenuItem("Quit");
         menuItem.setMnemonic(KeyEvent.VK_Q);
-        menuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                quit(frame);
-            }
-        });
+        menuItem.addActionListener(e -> quit(frame));
 
         // menu "Look and Feel"
         //

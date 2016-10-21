@@ -39,24 +39,14 @@ public class SelectGUI {
         selectGUIFrame.getRootPane().setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         JButton swingButton = new JButton("Swing GUI");
-        swingButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                startGUI(selectGUIFrame, TypeGUI.SWING);
-            }
-        });
+        swingButton.addActionListener(e -> startGUI(selectGUIFrame, TypeGUI.SWING));
         buttonBox.add(swingButton);
 
         // the horizontal distance
         buttonBox.add(Box.createHorizontalStrut(20));
 
         JButton javaFXButton = new JButton("JavaFX GUI");
-        javaFXButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                startGUI(selectGUIFrame, TypeGUI.JAVAFX);
-            }
-        });
+        javaFXButton.addActionListener(e -> startGUI(selectGUIFrame, TypeGUI.JAVAFX));
         buttonBox.add(javaFXButton);
 
         // show frame

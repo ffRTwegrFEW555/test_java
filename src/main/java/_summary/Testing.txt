@@ -5,3 +5,8 @@
 4. warnings
 5. README.md
 6. Modificators
+7. memory
+8. speed
+9. Multi-threads
+10. patters
+11. comments
