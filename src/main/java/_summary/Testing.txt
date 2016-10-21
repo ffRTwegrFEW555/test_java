@@ -1,0 +1,7 @@
+1. exceptions
+2. logging
+2.1. + console print actions
+3. javadocs
+4. warnings
+5. README.md
+6. Modificators

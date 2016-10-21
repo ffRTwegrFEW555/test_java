@@ -12,12 +12,14 @@ import java.awt.event.ActionListener;
  */
 public class SelectGUI {
     public static void selectionGUI() {
+        // initial standard frame settings
         JFrame selectGUIFrame = new JFrame("Select GUI");
-
-        // set window decoration style
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         selectGUIFrame.setResizable(false);
-
-        // size and on close operation
         selectGUIFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         selectGUIFrame.setSize(500, 300);
 
@@ -27,7 +29,7 @@ public class SelectGUI {
                 screenSize.width / 2 - (int) selectGUIFrame.getSize().getWidth() / 2,
                 screenSize.height / 2 - (int) selectGUIFrame.getSize().getHeight() / 2);
 
-        // add buttons
+        // add: Frame -> Panel -> ButtonBox -> Buttons
         Box buttonBox = new Box(BoxLayout.X_AXIS);
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.add(buttonBox);
@@ -40,7 +42,7 @@ public class SelectGUI {
         swingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                startGUI(selectGUIFrame, 0);
+                startGUI(selectGUIFrame, TypeGUI.SWING);
             }
         });
         buttonBox.add(swingButton);
@@ -52,7 +54,7 @@ public class SelectGUI {
         javaFXButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                startGUI(selectGUIFrame, 1);
+                startGUI(selectGUIFrame, TypeGUI.JAVAFX);
             }
         });
         buttonBox.add(javaFXButton);
@@ -62,9 +64,9 @@ public class SelectGUI {
         selectGUIFrame.setVisible(true);
     }
 
-    private static void startGUI(JFrame frame, int gui) {
+    private static void startGUI(JFrame frame, TypeGUI typeGUI) {
         frame.setVisible(false);
         frame.dispose();
-        new Controller(gui);
+        Controller.startGUI(typeGUI);
     }
 }
