@@ -249,7 +249,8 @@ import java.util.Map;
  * http://docs.oracle.com/javase/tutorial/uiswing/examples/components/index.html
  * менеджеры компоновки
  * http://comprice.ru/articles/detail.php?ID=42563&print=true
- *
+ * https://javaswing.wordpress.com/category/layout%D1%8B-%D0%B8-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0/
+ * http://spec-zone.ru/RU/Java/Tutorials/uiswing/layout/box.html#alignment
  *
  * GUI java
  * http://eax.me/java-swing/

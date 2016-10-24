@@ -8,9 +8,6 @@ import _jsoup._test2.view.SelectGUI;
 public class Parser {
     public static void main(String[] args) {
         // TODO: Icons and Pictures
-
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(SelectGUI::selectionGUI);
     }
 }

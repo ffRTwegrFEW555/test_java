@@ -16,8 +16,6 @@ public class Controller {
     public static void startGUI(TypeGUI typeGUI) {
         Controller.typeGUI = typeGUI;
 
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(() -> {
             GUI gui = TypeGUI.getGUIObject(typeGUI);
             if (gui != null) {

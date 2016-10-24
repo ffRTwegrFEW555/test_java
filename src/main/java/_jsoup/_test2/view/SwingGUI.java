@@ -4,9 +4,10 @@ import _jsoup._test2.content.Section;
 import _jsoup._test2.model.StrategySet;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,22 +17,100 @@ class SwingGUI extends GUI {
     private JFrame frame;
     private JTabbedPane tabbedPane;
 
+    private static JPanel getPanel(int boxLayout, float align) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, boxLayout));
+//        panel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+        if (align != -1) {
+            panel.setAlignmentX(align);
+        }
+
+        return panel;
+    }
+
+    private static JPanel getPanel(String headerText, int sizeX, int sizeY) {
+        //
+        JPanel panel = new JPanel();
+        panel.setPreferredSize(new Dimension(sizeX, sizeY));
+//        panel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        //
+        panel.add(getLabel(headerText));
+
+        //
+        JPanel checkBoxList = new JPanel();
+//        checkBoxList.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+        checkBoxList.setLayout(new BoxLayout(checkBoxList, BoxLayout.Y_AXIS));
+//        for (int i = 0; i < 20; i++) {
+//            JCheckBox checkBox = new JCheckBox("CheckBox #: " + i);
+//            checkBoxList.add(checkBox);
+//        }
+        JScrollPane checkBoxScrollPane = new JScrollPane(checkBoxList);
+        checkBoxScrollPane.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        //
+        panel.add(checkBoxScrollPane);
+
+        return panel;
+    }
+
+    private static JLabel getLabel(String text) {
+        JLabel label = new JLabel(text);
+//        label.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+        label.setAlignmentX(Component.LEFT_ALIGNMENT);
+        label.setBorder(new EmptyBorder(5, 5, 5, 5));
+        label.setFont(new Font(null, Font.ITALIC, 12));
+        return label;
+    }
+
     private class ParsePanel extends JPanel {
         public ParsePanel() {
-            super(new FlowLayout());
-            JLabel label = new JLabel("Label: " + Math.random());
-            add(label);
+            super();
+            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+            setBorder(new EmptyBorder(10, 10, 10, 10));
 
-            new Thread(() -> {
-                while (true) {
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    label.setText("Label: " + Math.random());
-                }
-            }).start();
+            // Header panel
+            JPanel headerPanel = getPanel(BoxLayout.Y_AXIS, Component.LEFT_ALIGNMENT);
+            JLabel headerTextLabel = new JLabel("Header, header, header, header, header, header, header, header, header, " +
+                    "header, header, header, header, ");
+            headerTextLabel.setBorder(new CompoundBorder(
+                    BorderFactory.createTitledBorder("Information"),
+                    new EmptyBorder(5, 10, 5, 10)));
+            headerPanel.add(headerTextLabel);
+            add(headerPanel);
+
+            // ==> Body panel
+            JPanel bodyPanel = getPanel(BoxLayout.X_AXIS, Component.LEFT_ALIGNMENT);
+
+            // ==> (Body panel) First column
+            JPanel firstColumnPanel = getPanel(BoxLayout.Y_AXIS, -1);
+            firstColumnPanel.setMaximumSize(new Dimension(200, 700));
+
+            //
+            firstColumnPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            firstColumnPanel.add(getPanel("Product categories", 200, 330));
+            firstColumnPanel.add(Box.createVerticalGlue());
+            firstColumnPanel.add(getPanel("Product options", 200, 150));
+
+            //
+            JPanel buttonsPanel = getPanel(BoxLayout.Y_AXIS, Component.LEFT_ALIGNMENT);
+            buttonsPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+            buttonsPanel.add(new JButton("Fill category and options lists"));
+            buttonsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            buttonsPanel.add(new JButton("Start parse"));
+            firstColumnPanel.add(buttonsPanel);
+
+            //
+            bodyPanel.add(firstColumnPanel);
+
+            // <== (Body panel) First column
+
+            // <== Body panel
+
+            //
+            add(bodyPanel);
         }
     }
 
@@ -55,9 +134,7 @@ class SwingGUI extends GUI {
                         });
                         add(menuItemLAF);
                     }
-                } catch (Exception ignored) {
-                    // If ANYTHING weird happens, don't add this L&F
-                }
+                } catch (Exception ignored) {}
             }
         }
     }
@@ -73,7 +150,8 @@ class SwingGUI extends GUI {
         frame = new JFrame("Content parser");
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
             @Override
@@ -108,11 +186,11 @@ class SwingGUI extends GUI {
         // menu standard
         //
         JMenu menu = new JMenu("Menu");
-        menu.setMnemonic (KeyEvent.VK_M);
+        menu.setMnemonic(KeyEvent.VK_M);
 
         // submenu
         JMenu submenu = new JMenu("+ Add new parser tab");
-        submenu.setMnemonic (KeyEvent.VK_A);
+        submenu.setMnemonic(KeyEvent.VK_A);
 
         // submenu elements
         JMenuItem menuItemParser;
