@@ -258,6 +258,9 @@ import java.util.Map;
  * JDBC Java
  * http://www.quizful.net/post/using-jdbc
  *
+ * JavaFX 3D
+ * https://www.youtube.com/user/ThinMatrix/videos
+ *
  */
 public class Summary {
 

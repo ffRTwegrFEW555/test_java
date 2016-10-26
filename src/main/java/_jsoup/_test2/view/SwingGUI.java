@@ -8,6 +8,8 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,12 +19,18 @@ class SwingGUI extends GUI {
     private JFrame frame;
     private JTabbedPane tabbedPane;
 
-    private static JPanel getPanel(int boxLayout, float align) {
+    private static JPanel getPanel(int boxLayout, float align, int sizeX, int sizeY) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, boxLayout));
-//        panel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+        panel.setBorder(new CompoundBorder(
+                BorderFactory.createLineBorder(Color.GRAY, 1),
+                new EmptyBorder(5, 5, 5, 5)));
         if (align != -1) {
             panel.setAlignmentX(align);
+        }
+
+        if (sizeX != 0 && sizeY != 0) {
+            panel.setMaximumSize(new Dimension(sizeX, sizeY));
         }
 
         return panel;
@@ -31,18 +39,21 @@ class SwingGUI extends GUI {
     private static JPanel getPanel(String headerText, int sizeX, int sizeY) {
         //
         JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(sizeX, sizeY));
-//        panel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+        panel.setMaximumSize(new Dimension(sizeX, sizeY));
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 
         //
         panel.add(getLabel(headerText));
 
         //
         JPanel checkBoxList = new JPanel();
-//        checkBoxList.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         checkBoxList.setLayout(new BoxLayout(checkBoxList, BoxLayout.Y_AXIS));
+        JCheckBox jCheckBox = new JCheckBox("Select all");
+        checkBoxList.add(jCheckBox);
+        checkBoxList.add(Box.createRigidArea(new Dimension(0, 10)));
+
 //        for (int i = 0; i < 20; i++) {
 //            JCheckBox checkBox = new JCheckBox("CheckBox #: " + i);
 //            checkBoxList.add(checkBox);
@@ -58,10 +69,10 @@ class SwingGUI extends GUI {
 
     private static JLabel getLabel(String text) {
         JLabel label = new JLabel(text);
-//        label.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         label.setAlignmentX(Component.LEFT_ALIGNMENT);
-        label.setBorder(new EmptyBorder(5, 5, 5, 5));
-        label.setFont(new Font(null, Font.ITALIC, 12));
+        label.setBorder(new CompoundBorder(
+                BorderFactory.createLineBorder(Color.GRAY, 1),
+                new EmptyBorder(5, 5, 5, 5)));
         return label;
     }
 
@@ -69,48 +80,115 @@ class SwingGUI extends GUI {
         public ParsePanel() {
             super();
             setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-            setBorder(new EmptyBorder(10, 10, 10, 10));
+            setBorder(new EmptyBorder(5, 5, 5, 5));
 
-            // Header panel
-            JPanel headerPanel = getPanel(BoxLayout.Y_AXIS, Component.LEFT_ALIGNMENT);
-            JLabel headerTextLabel = new JLabel("Header, header, header, header, header, header, header, header, header, " +
-                    "header, header, header, header, ");
-            headerTextLabel.setBorder(new CompoundBorder(
-                    BorderFactory.createTitledBorder("Information"),
-                    new EmptyBorder(5, 10, 5, 10)));
-            headerPanel.add(headerTextLabel);
-            add(headerPanel);
+            // ==> Panel: Settings
+            JPanel settingsPanel = getPanel(BoxLayout.X_AXIS, Component.LEFT_ALIGNMENT, 1024, 300);
 
-            // ==> Body panel
-            JPanel bodyPanel = getPanel(BoxLayout.X_AXIS, Component.LEFT_ALIGNMENT);
-
-            // ==> (Body panel) First column
-            JPanel firstColumnPanel = getPanel(BoxLayout.Y_AXIS, -1);
-            firstColumnPanel.setMaximumSize(new Dimension(200, 700));
+            // + Panel: Product categories
+            settingsPanel.add(getPanel("Product categories:", 200, 300));
 
             //
-            firstColumnPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-            firstColumnPanel.add(getPanel("Product categories", 200, 330));
-            firstColumnPanel.add(Box.createVerticalGlue());
-            firstColumnPanel.add(getPanel("Product options", 200, 150));
+            settingsPanel.add(Box.createRigidArea(new Dimension(5, 0)));
+
+            // + Panel: Product options
+            settingsPanel.add(getPanel("Product options:", 200, 300));
+
+            // ==> Panel: Other options
+            JPanel otherOptionsPanel = getPanel(BoxLayout.Y_AXIS, Component.LEFT_ALIGNMENT, 600, 300);
+            otherOptionsPanel.setBorder(new CompoundBorder(
+                    BorderFactory.createLineBorder(Color.GRAY, 1),
+                    new EmptyBorder(0, 5, 0, 5)));
+
+            // + Label: "URL"
+            otherOptionsPanel.add(getLabel("URL:"));
+
+            // + Panel: URL
+            JPanel urlTextFieldPanel = getPanel(BoxLayout.X_AXIS, Component.LEFT_ALIGNMENT, 600, 30);
+            urlTextFieldPanel.setBorder(new CompoundBorder(
+                    BorderFactory.createLineBorder(Color.GRAY, 1),
+                    new EmptyBorder(5, 0, 5, 0)));
+
+            JTextField urlTextField = new JTextField("http://");
+            urlTextField.setAlignmentX(Component.LEFT_ALIGNMENT);
+            urlTextField.setMaximumSize(new Dimension(500, 25));
+            urlTextField.setEditable(false);
+            urlTextFieldPanel.add(urlTextField);
+
+            urlTextFieldPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+
+            JButton changeUrlButton = new JButton("Change URL");
+            changeUrlButton.setMaximumSize(new Dimension(100, 25));
+            changeUrlButton.setPreferredSize(new Dimension(100, 25));
+            changeUrlButton.addActionListener(e -> {
+                        String result = JOptionPane.showInputDialog(
+                                "Enter a new URL:"
+                                        + "\n"
+                                        + "(example: http://www.gamaliev.com)");
+                        if (!result.contains("http://")) {
+                            JOptionPane.showMessageDialog(urlTextFieldPanel, "Wrong URL address");
+                        } else {
+                            urlTextField.setText(result);
+                        }
+                    }
+            );
+            urlTextFieldPanel.add(changeUrlButton);
+
+            otherOptionsPanel.add(urlTextFieldPanel);
+
+            // + Label: "a Folder path to save"
+            otherOptionsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+            otherOptionsPanel.add(getLabel("a Folder path to save:"));
+
+            // + Panel: a Folder path
+            JPanel pathTextFieldPanel = getPanel(BoxLayout.X_AXIS, Component.LEFT_ALIGNMENT, 600, 30);
+            pathTextFieldPanel.setBorder(new CompoundBorder(
+                    BorderFactory.createLineBorder(Color.GRAY, 1),
+                    new EmptyBorder(5, 0, 5, 0)));
+
+            JTextField pathTextField = new JTextField(new File("").getAbsolutePath());
+            pathTextField.setAlignmentX(Component.LEFT_ALIGNMENT);
+            pathTextField.setMaximumSize(new Dimension(450, 25));
+            pathTextField.setEditable(false);
+            pathTextFieldPanel.add(pathTextField);
+
+            pathTextFieldPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+
+            JButton selectFolderToSaveButton = new JButton("Select a folder to save");
+            selectFolderToSaveButton.addActionListener(e -> {
+                JFileChooser chooser = new JFileChooser();
+                chooser.setCurrentDirectory(new File("."));
+                chooser.setDialogTitle("Select a folder to save");
+                chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                chooser.setAcceptAllFileFilterUsed(false);
+                if (chooser.showOpenDialog(otherOptionsPanel) == JFileChooser.APPROVE_OPTION) {
+                    pathTextField.setText(chooser.getSelectedFile().toString());
+                }
+            });
+            selectFolderToSaveButton.setMaximumSize(new Dimension(150, 25));
+            selectFolderToSaveButton.setPreferredSize(new Dimension(150, 25));
+            pathTextFieldPanel.add(selectFolderToSaveButton);
+
+            otherOptionsPanel.add(pathTextFieldPanel);
 
             //
-            JPanel buttonsPanel = getPanel(BoxLayout.Y_AXIS, Component.LEFT_ALIGNMENT);
-            buttonsPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-            buttonsPanel.add(new JButton("Fill category and options lists"));
-            buttonsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-            buttonsPanel.add(new JButton("Start parse"));
-            firstColumnPanel.add(buttonsPanel);
+            otherOptionsPanel.add(Box.createVerticalGlue());
+            otherOptionsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-            //
-            bodyPanel.add(firstColumnPanel);
+            // + Panel: Save options and controls elements
+            JPanel saveOptionsAndControlsElementsPanel
+                    = getPanel(BoxLayout.X_AXIS, Component.LEFT_ALIGNMENT, 600, 130);
+            saveOptionsAndControlsElementsPanel.setPreferredSize(new Dimension(600, 130));
+            saveOptionsAndControlsElementsPanel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 
-            // <== (Body panel) First column
+            otherOptionsPanel.add(saveOptionsAndControlsElementsPanel);
 
-            // <== Body panel
 
-            //
-            add(bodyPanel);
+            settingsPanel.add(otherOptionsPanel);
+            // <== Panel: Other options
+
+            add(settingsPanel);
+            // <== Panel: Settings
         }
     }
 
@@ -134,7 +212,8 @@ class SwingGUI extends GUI {
                         });
                         add(menuItemLAF);
                     }
-                } catch (Exception ignored) {}
+                } catch (Exception ignored) {
+                }
             }
         }
     }
@@ -220,21 +299,17 @@ class SwingGUI extends GUI {
         return menuBar;
     }
 
-    //This method must be evoked from the event-dispatching thread.
     private void quit(JFrame frame) {
         int n = JOptionPane.showOptionDialog(frame,
-                "Windows are still open.\nDo you really want to quit?",
-                "Quit Confirmation",
+                "Do you really want to quit?",
+                "Quit confirmation",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 new String[]{"Quit", "Cancel"},
                 "Quit");
         if (n == JOptionPane.YES_OPTION) {
-            System.out.println("Quitting.");
             System.exit(0);
-        } else {
-            System.out.println("Quit operation not confirmed; staying alive.");
         }
     }
 
