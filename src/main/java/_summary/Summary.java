@@ -261,6 +261,12 @@ import java.util.Map;
  * JavaFX 3D
  * https://www.youtube.com/user/ThinMatrix/videos
  *
+ * Docs
+ * Стажировка Кислицина
+ *
+ * Local Date and Time API 8
+ * http://www.mscharhag.com/java/java-8-date-time-api
+ *
  */
 public class Summary {
 
