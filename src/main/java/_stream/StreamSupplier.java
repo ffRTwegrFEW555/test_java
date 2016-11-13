@@ -44,5 +44,7 @@ public class StreamSupplier {
         // every time get new Stream
         System.out.println(streamSupplier.get());
         System.out.println(streamSupplier.get());
+
+        //
     }
 }
