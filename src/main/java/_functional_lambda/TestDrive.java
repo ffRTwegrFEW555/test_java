@@ -1,14 +1,14 @@
-package _lambda_functional;
+package _functional_lambda;
 
-import _lambda_functional.entity.User;
-import _lambda_functional.entity.UserFactory;
+import _functional_lambda.entity.User;
+import _functional_lambda.entity.UserFactory;
 
 import java.util.Arrays;
 
 /**
  * Created by USER on 12.11.2016, 21:06.
  */
-public class _TestDrive {
+public class TestDrive {
     public static void main(String[] args) {
 
         // default

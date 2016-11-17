@@ -1,4 +1,4 @@
-package _lambda_functional.entity;
+package _functional_lambda.entity;
 
 /**
  * Created by USER on 12.11.2016, 21:42.

@@ -267,6 +267,9 @@ import java.util.Map;
  * Local Date and Time API 8
  * http://www.mscharhag.com/java/java-8-date-time-api
  *
+ * Predicate
+ * http://howtodoinjava.com/java-8/how-to-use-predicate-in-java-8/
+ *
  */
 public class Summary {
 

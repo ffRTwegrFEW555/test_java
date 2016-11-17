@@ -1,4 +1,4 @@
-package _lambda_functional;
+package _functional_lambda;
 
 /**
  * Created by USER on 12.11.2016, 21:26.
