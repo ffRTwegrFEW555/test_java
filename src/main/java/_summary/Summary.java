@@ -270,6 +270,9 @@ import java.util.Map;
  * Predicate
  * http://howtodoinjava.com/java-8/how-to-use-predicate-in-java-8/
  *
+ * Function
+ * http://www.deadcoderising.com/2015-09-07-java-8-functional-composition-using-compose-and-andthen/
+ *
  */
 public class Summary {
 

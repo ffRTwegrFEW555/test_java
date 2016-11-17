@@ -1,7 +1,7 @@
-package _functional_lambda;
+package _functional_lambda.test;
 
-import _functional_lambda.entity.User;
-import _functional_lambda.entity.UserFactory;
+import _functional_lambda.test.entity.User;
+import _functional_lambda.test.entity.UserFactory;
 
 import java.util.Arrays;
 
