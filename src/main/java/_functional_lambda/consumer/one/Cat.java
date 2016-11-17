@@ -4,7 +4,7 @@ package _functional_lambda.consumer.one;
  * Created by USER on 17.11.2016, 21:43.
  */
 public class Cat {
-    private long    id;
+    private static long id;
     private String  name;
     private int     age;
     private String  color;
