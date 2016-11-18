@@ -264,6 +264,9 @@ import java.util.Map;
  * Docs
  * Стажировка Кислицина
  *
+ * Java Docs
+ * http://www.oracle.com/technetwork/articles/java/index-137868.html
+ *
  * Local Date and Time API 8
  * http://www.mscharhag.com/java/java-8-date-time-api
  *

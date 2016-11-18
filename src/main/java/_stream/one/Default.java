@@ -1,4 +1,4 @@
-package _stream;
+package _stream.one;
 
 import java.util.Arrays;
 import java.util.List;
@@ -63,7 +63,13 @@ public class Default {
                 .mapToObj(d -> "String: " + d)
                 .forEach(System.out::println);
 
+        //
+        int result = IntStream
+                .range(1, 9 + 1)
+                .reduce(0, (n1, n2) -> n1 + n2);
 
+        System.out.println(result);
+        
 
     }
 }

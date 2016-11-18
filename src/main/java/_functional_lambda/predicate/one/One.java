@@ -8,7 +8,10 @@ import java.util.Arrays;
 
 
 /**
- * Created by USER on 16.11.2016, 17:46.
+ * Created on 16.11.2016, 17:46, 22:03.
+ *
+ * @author Vadim Gamaliev <gamaliev-vadim@yandex.com>
+ * @version 1.0
  */
 public class One {
     public static void main(String[] args) {

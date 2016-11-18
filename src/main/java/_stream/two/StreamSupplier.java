@@ -1,4 +1,4 @@
-package _stream;
+package _stream.two;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +21,7 @@ public class StreamSupplier {
                 .forEach(System.out::println);
 
 /*
-        // stream has already been operated or closed
+        // a stream has already been operated or closed
         stringStream
                 .forEach(System.out::println);
 */
@@ -41,7 +41,7 @@ public class StreamSupplier {
                 .get()
                 .forEach(System.out::println);
 
-        // every time get new Stream
+        // every time get a new Stream
         System.out.println(streamSupplier.get());
         System.out.println(streamSupplier.get());
 

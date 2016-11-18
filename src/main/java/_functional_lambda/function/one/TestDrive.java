@@ -2,7 +2,10 @@ package _functional_lambda.function.one;
 
 import java.util.function.Function;
 /**
- * Created by USER on 17.11.2016, 17:00.
+ * @author Vadim Gamaliev <gamaliev-vadim@yandex.com>
+ * @version 1.0
+ *
+ * Created by USER on 17.11.2016, 17:00, 21:54.
  */
 public class TestDrive {
     public static void main(String[] args) {
