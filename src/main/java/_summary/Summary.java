@@ -276,6 +276,9 @@ import java.util.Map;
  * Function
  * http://www.deadcoderising.com/2015-09-07-java-8-functional-composition-using-compose-and-andthen/
  *
+ * Stream
+ * https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html
+ *
  */
 public class Summary {
 

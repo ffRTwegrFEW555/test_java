@@ -1,4 +1,4 @@
-package _stream.two;
+package _stream.stream_supplier;
 
 import java.util.Arrays;
 import java.util.List;

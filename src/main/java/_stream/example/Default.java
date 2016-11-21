@@ -1,5 +1,6 @@
-package _stream.one;
+package _stream.example;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.DoubleStream;
@@ -58,7 +59,7 @@ public class Default {
                 .forEach(System.out::println);
 
         //
-        DoubleStream.of(1.22, 2.33, 3.11)
+        DoubleStream.of(1.22, 4.33, 3.11)
                 .sorted()
                 .mapToObj(d -> "String: " + d)
                 .forEach(System.out::println);
@@ -69,7 +70,27 @@ public class Default {
                 .reduce(0, (n1, n2) -> n1 + n2);
 
         System.out.println(result);
-        
+
+        //
+        // unsupported operation (unmodified collection)
+        // List<String> names2 = Arrays.asList("Bob", "Angela", "Carl");
+        List<String> names2 = new ArrayList<>(names);
+        names2.removeIf((s) -> s.contains("a"));
+        System.out.println(names2);
+        System.out.println();
+
+        //
+        List<String> names3 = new ArrayList<>(names);
+        names3.add("King");
+        names3.retainAll(names); // delete all, but names;
+        System.out.println(names3);
+        System.out.println();
+
+        //
+        names3.retainAll(names2);
+        System.out.println(names3);
+
+
 
     }
 }

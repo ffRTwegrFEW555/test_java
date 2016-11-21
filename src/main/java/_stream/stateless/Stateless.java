@@ -1,4 +1,4 @@
-package _stream.three;
+package _stream.stateless;
 
 import java.util.ArrayList;
 import java.util.stream.Stream;

@@ -23,10 +23,13 @@ public class CollectionSort1 {
         //
         stringArrayList.forEach(System.out::println);
         System.out.println("\n===============================\n");
-        Collections.sort(stringArrayList);
+
+//        Collections.sort(stringArrayList);
+        stringArrayList.sort(String::compareToIgnoreCase);
+
         stringArrayList.forEach(System.out::println);
 
-        // Сортировка объектов
+        //
     }
 
 }
