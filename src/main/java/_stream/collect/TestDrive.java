@@ -93,8 +93,7 @@ public class TestDrive {
                         (sj, u) -> sj.add(
                                         u.getId() + "-" +
                                         u.getName() + "-" +
-                                        u.getAge()
-                        ),
+                                        u.getAge()),
                         StringJoiner::merge,
                         (sj) -> sj.toString().toUpperCase()
                 );
