@@ -279,77 +279,16 @@ import java.util.Map;
  * Stream
  * https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html
  *
+ * ForkJoinTask
+ * RecursiveTask
+ * https://habrahabr.ru/post/128985/
+ *
  */
 public class Summary {
 
     public static void main(String[] args) {
-        System.out.println(maxPowerOf2(131073));   //131072
-        System.out.println();
-        System.out.println(maxPowerOf2(1026));      //1024
-        System.out.println();
-        System.out.println(maxPowerOf2(17));        //16
-    }
-
-    public static void printTextToBinary(int i) {
-        String s = Integer.toBinaryString(i);
-        while (s.length() != 32) {
-            s = "0" + s;
-        }
-        System.out.println(s);
-    }
 
 
-    public static int maxPowerOf2(int x) {
-
-        printTextToBinary(x);
-        System.out.println();
-
-        int y;
-
-        y = x >> 1;
-        printTextToBinary(y);
-
-        x |= y;
-        printTextToBinary(x);
-        System.out.println();
-
-        y = x >> 2;
-        printTextToBinary(y);
-
-        x |= y;
-        printTextToBinary(x);
-        System.out.println();
-
-        y = x >> 4;
-        printTextToBinary(y);
-
-        x |= y;
-        printTextToBinary(x);
-        System.out.println();
-
-        y = x >> 8;
-        printTextToBinary(y);
-
-        x |= y;
-        printTextToBinary(x);
-        System.out.println();
-
-        y = x >> 16;
-        printTextToBinary(y);
-
-        x |= y;
-        printTextToBinary(x);
-        System.out.println();
-
-        y = x >> 1;
-        printTextToBinary(y);
-
-        x = x ^ y;
-        printTextToBinary(x);
-        System.out.println();
-        System.out.println();
-
-        return x;
         // comment
         // new
         // test

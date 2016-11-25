@@ -3,7 +3,10 @@ package _serialization.one;
 import java.io.*;
 
 /**
- * Created by Vad on 05.06.2016.
+ * Created on 05.06.2016, 14:29.
+ *
+ * @author Vadim Gamaliev <gamaliev-vadim@yandex.com>
+ * @version 1.0
  */
 public class _TestDrive {
     public static void main(String[] args) {
@@ -12,7 +15,7 @@ public class _TestDrive {
         Level_3 level_3_3 = null;
         Object level_object = null;
 
-        String file = "f:\\home_dir\\vadim\\java\\projects\\temp\\files.ser";
+        String file = "f:\\home_dir\\vadim\\java\\projects\\_actual\\test_java\\temp\\files.ser";
 
         //
         System.out.println();

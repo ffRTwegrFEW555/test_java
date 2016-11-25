@@ -12,7 +12,7 @@ public class _TestDrive {
         Level_3 level_3_3 = null;
         Object level_object = null;
 
-        String file = "f:\\home_dir\\vadim\\java\\projects\\temp\\files.ser";
+        String file = "f:\\home_dir\\vadim\\java\\projects\\_actual\\test_java\\temp\\files.ser";
 
         //
         System.out.println();

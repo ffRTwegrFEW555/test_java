@@ -8,7 +8,9 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
- * Created by USER on 13.11.2016, 13:42.
+ * @author Vadim Gamaliev <gamaliev-vadim@yandex.com>
+ * @version 1.0
+ * Created by USER on 13.11.2016, 13:42, 14:07.
  */
 public class Default {
     public static void main(String[] args) {
