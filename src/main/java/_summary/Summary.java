@@ -283,6 +283,13 @@ import java.util.Map;
  * RecursiveTask
  * https://habrahabr.ru/post/128985/
  *
+ * NIO
+ * http://www.quizful.net/post/java-nio-tutorial
+ *
+ * Spring
+ * https://www.youtube.com/playlist?list=PL6jg6AGdCNaWF-sUH2QDudBRXo54zuN1t
+ *
+ *
  */
 public class Summary {
 
