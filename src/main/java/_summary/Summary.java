@@ -289,6 +289,14 @@ import java.util.Map;
  * Spring
  * https://www.youtube.com/playlist?list=PL6jg6AGdCNaWF-sUH2QDudBRXo54zuN1t
  *
+ * SQL
+ * https://habrahabr.ru/post/181033/
+ * http://www.sql-tutorial.ru/
+ * http://www.sql-ex.ru/
+ *
+ * MySQL or MariaDB
+ * execute *.sql script:
+ * mysql -u root -p < initDB.sql
  *
  */
 public class Summary {
