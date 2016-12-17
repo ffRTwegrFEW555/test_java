@@ -298,15 +298,38 @@ import java.util.Map;
  * execute *.sql script:
  * mysql -u root -p < initDB.sql
  *
+ * Spring:
+ * https://habrahabr.ru/post/232381/
+ *
+ * 1000+ часов
+ * https://habrahabr.ru/company/golovachcourses/blog/215275/
+ *
+ * JEE servlet api
+ * http://javastudy.ru/interview/jee-servlet-api-questions/
+ * http://javastudy.ru/interview/jee-servlet-api-questions-2/
+ * http://www.java2ee.ru/servlets/lifecycle.html
+ *
+ * Java EE (and most other)
+ * http://javastudy.ru/interview/list-of-questions-javaee-interview/
+ *
+ * JSP
+ * http://www.javaportal.ru/java/articles/Java_Server_Pages.html
+ *
+ * HTTP
+ * example source GET POST
+ * https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html
+ *
+ *
  */
 public class Summary {
 
     public static void main(String[] args) {
 
-
-        // comment
-        // new
-        // test
+        String name = "test";
+        long size = 20333;
+        long compressedSize = 10333;
+        String message = String.format("%s %s Kb (%s Kb) сжатие: %s%%", name, size / 1024, compressedSize / 1024, 100 - ((compressedSize * 100) / size));
+        System.out.println(message);
     }
 }
 

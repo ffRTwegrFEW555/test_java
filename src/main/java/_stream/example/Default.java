@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
- * @author Vadim Gamaliev <gamaliev-vadim@yandex.com>
+ * @author Vadim Gamaliev <a href="mailto:gamaliev-vadim@yandex.com">(e-mail: gamaliev-vadim@yandex.com)</a>
  * @version 1.0
  * Created by USER on 13.11.2016, 13:42, 14:07.
  */

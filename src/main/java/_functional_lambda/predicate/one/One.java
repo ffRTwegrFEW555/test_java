@@ -10,7 +10,7 @@ import java.util.Arrays;
 /**
  * Created on 16.11.2016, 17:46, 22:03.
  *
- * @author Vadim Gamaliev <gamaliev-vadim@yandex.com>
+ * @author Vadim Gamaliev <a href="mailto:gamaliev-vadim@yandex.com">(e-mail: gamaliev-vadim@yandex.com)</a>
  * @version 1.0
  */
 public class One {

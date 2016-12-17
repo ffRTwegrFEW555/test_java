@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 /**
- * @author Vadim Gamaliev <gamaliev-vadim@yandex.com>
+ * @author Vadim Gamaliev <a href="mailto:gamaliev-vadim@yandex.com">(e-mail: gamaliev-vadim@yandex.com)</a>
  * @version 1.0
  *          Created by USER on 23.11.2016, 15:27.
  */

@@ -3,7 +3,7 @@ package _stream.todo;
 /**
  * Created on 19.11.2016, 17:21.
  *
- * @author Vadim Gamaliev <gamaliev-vadim@yandex.com>
+ * @author Vadim Gamaliev <a href="mailto:gamaliev-vadim@yandex.com">(e-mail: gamaliev-vadim@yandex.com)</a>
  * @version 1.0
  */
 public class TestDrive {
