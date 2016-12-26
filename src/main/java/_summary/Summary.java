@@ -319,6 +319,9 @@ import java.util.Map;
  * example source GET POST
  * https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html
  *
+ * Password vaildate
+ * https://www.mkyong.com/regular-expressions/how-to-validate-password-with-regular-expression/
+ *
  *
  */
 public class Summary {
