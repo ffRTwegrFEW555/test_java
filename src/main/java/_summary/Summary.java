@@ -322,6 +322,19 @@ import java.util.Map;
  * Password vaildate
  * https://www.mkyong.com/regular-expressions/how-to-validate-password-with-regular-expression/
  *
+ * HashMap
+ * http://info.javarush.ru/translation/2013/10/22/%D0%9A%D0%B0%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-HashMap-%D0%B2-Java.html
+ * https://habrahabr.ru/post/128017/
+ *
+ * SQL
+ * DateTime
+ * Timestamp
+ * https://habrahabr.ru/post/61391/
+ *
+ * SQL
+ * Statement, PreparedStatement, CallableStatement
+ * https://habrahabr.ru/sandbox/41444/
+ *
  *
  */
 public class Summary {
