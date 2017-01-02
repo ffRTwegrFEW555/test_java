@@ -23,6 +23,15 @@ public class MySqlStatement {
             statement.executeQuery(sqlQuerySelect);
             ResultSet users = statement.getResultSet();
 
+            /*
+
+                DBUtil.getConnection().setAutoCommit(false);
+                DBUtil.getConnection().setAutoCommit(true);
+                DBUtil.getConnection().commit();
+                DBUtil.getConnection().rollback();
+
+             */
+
             while (users.next()) {
                 System.out.println(new User(
                         users.getInt("id"),
