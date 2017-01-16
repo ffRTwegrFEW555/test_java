@@ -42,5 +42,19 @@ public class TestDrive {
                 Integer.lowestOneBit(10) // 2 (i & -i)
         );
 
+
+        // =====================
+
+        long    l = 1L;
+        float   f = 1.0F;
+        double  d = 1.0D;
+
+
+        // =====================
+
+        double e = 47e47;
+        System.out.println(e);
+        System.out.println(Double.toHexString(e));
+
     }
 }

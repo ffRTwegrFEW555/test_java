@@ -335,6 +335,31 @@ import java.util.Map;
  * Statement, PreparedStatement, CallableStatement
  * https://habrahabr.ru/sandbox/41444/
  *
+ * Spring IoC example
+ * http://nikcode.blogspot.ru/2011/09/spring-inversion-of-control.html
+ *
+ * JavaScript async defer загрузка страниц
+ * https://learn.javascript.ru/external-script
+ *
+ * Собеседования. Книги
+ * https://docs.google.com/presentation/d/18o__IGRqYadi4jx2wX2rX6AChHh-KrxktD8xI7bS33k/edit#slide=id.g1b6e0d7e8e_0_12
+ * https://github.com/JavaOPs/topjava/blob/master/cv.md#%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D1%8C%D1%8E
+ * http://javawebinar.ru/books.html
+ * http://javaops.ru/vacation/test.html
+ * https://habrahabr.ru/users/Bedrosova/topics/
+ * https://www.youtube.com/watch?v=M4ODqY1hgUY
+ * https://tproger.ru/digest/enterprise-junior/
+ *
+ * agile
+ * https://habrahabr.ru/company/edison/blog/313410/
+ * https://www.youtube.com/watch?v=loVd5MTCBWI
+ *
+ * JPA Transaction
+ * http://www.sql.ru/forum/1183994/spring-transaction-propagation
+ *
+ * Red-black tree
+ * http://tommikaikkonen.github.io/rbtree/
+ * !!! http://www.cs.usfca.edu/~galles/visualization/RedBlack.html
  *
  */
 public class Summary {
