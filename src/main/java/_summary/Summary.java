@@ -2,6 +2,8 @@ package _summary;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Vad on 03.05.2016.
@@ -356,21 +358,50 @@ import java.util.Map;
  *
  * JPA Transaction
  * http://www.sql.ru/forum/1183994/spring-transaction-propagation
+ * http://www.ibm.com/developerworks/ru/library/j-ts1/
+ * http://www.ibm.com/developerworks/ru/library/j-ts2/
+ * http://stackoverflow.com/questions/15784679/why-do-my-entities-remain-detached-after-persisting-them-in-jpa
+ * https://openjpa.apache.org/builds/1.2.3/apache-openjpa/docs/jpa_overview_em_lifecycle.html
  *
  * Red-black tree
  * http://tommikaikkonen.github.io/rbtree/
  * !!! http://www.cs.usfca.edu/~galles/visualization/RedBlack.html
+ *
+ * Regex test
+ * https://regex101.com
+ *
+ * SSH
+ * https://www.opennet.ru/base/sec/ssh_intro.txt.html
+ * https://toster.ru/q/349216
+ * https://ru.wikipedia.org/wiki/%D0%9E%D0%B4%D0%BD%D0%BE%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D1%8F%D1%8F_%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F
+ * https://ru.wikipedia.org/wiki/%D0%9A%D1%80%D0%B8%D0%BF%D1%82%D0%BE%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D1%81_%D0%BE%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8B%D0%BC_%D0%BA%D0%BB%D1%8E%D1%87%D0%BE%D0%BC
+ *
+ * Hibernate
+ * @ Embeddable
+ * http://www.ibm.com/developerworks/ru/library/os-hibernatejpa/
+ * http://www.sql.ru/forum/1106782/obyasnite-embeddable
+ * https://en.wikibooks.org/wiki/Java_Persistence/Embeddables
+ *
+ * EntityManager lifecycle
+ * https://openjpa.apache.org/builds/1.2.3/apache-openjpa/docs/jpa_overview_em_lifecycle.html
+ *
+ * Java Best Practices
+ * https://www.javacodegeeks.com/2010/07/java-best-practices-dateformat-in.html
  *
  */
 public class Summary {
 
     public static void main(String[] args) {
 
-        String name = "test";
-        long size = 20333;
-        long compressedSize = 10333;
-        String message = String.format("%s %s Kb (%s Kb) сжатие: %s%%", name, size / 1024, compressedSize / 1024, 100 - ((compressedSize * 100) / size));
-        System.out.println(message);
+        String line = "1000001001";
+        Pattern pattern = Pattern.compile("(?=1(0+)1)");
+        Matcher matcher = pattern.matcher(line);
+
+        while(matcher.find()) {
+            System.out.format("Text \"%s\" found at %d to %d.%n",
+                    matcher.group(), matcher.start(), matcher.end());
+            System.out.println(matcher.group(1));
+        }
     }
 }
 
