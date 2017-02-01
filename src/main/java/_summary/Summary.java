@@ -343,7 +343,7 @@ import java.util.regex.Pattern;
  * JavaScript async defer загрузка страниц
  * https://learn.javascript.ru/external-script
  *
- * Собеседования. Книги
+ * Собеседования
  * https://docs.google.com/presentation/d/18o__IGRqYadi4jx2wX2rX6AChHh-KrxktD8xI7bS33k/edit#slide=id.g1b6e0d7e8e_0_12
  * https://github.com/JavaOPs/topjava/blob/master/cv.md#%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D1%8C%D1%8E
  * http://javawebinar.ru/books.html
@@ -351,6 +351,7 @@ import java.util.regex.Pattern;
  * https://habrahabr.ru/users/Bedrosova/topics/
  * https://www.youtube.com/watch?v=M4ODqY1hgUY
  * https://tproger.ru/digest/enterprise-junior/
+ * http://www.javadeathmatch.com
  *
  * agile
  * https://habrahabr.ru/company/edison/blog/313410/
@@ -381,12 +382,57 @@ import java.util.regex.Pattern;
  * http://www.ibm.com/developerworks/ru/library/os-hibernatejpa/
  * http://www.sql.ru/forum/1106782/obyasnite-embeddable
  * https://en.wikibooks.org/wiki/Java_Persistence/Embeddables
+ * == Lazy
+ * http://www.thoughts-on-java.org/5-ways-to-initialize-lazy-relations-and-when-to-use-them/
+ * == Cache
+ * https://habrahabr.ru/post/268747/
+ * == Cache first level
+ * http://howtodoinjava.com/hibernate/understanding-hibernate-first-level-cache-with-example/
+ * == Cache second level
+ * http://javac-dmx.blogspot.ru/2015/01/13-hibernate.html
+ * http://dr-magic.blogspot.ru/2010/01/hibernate-4.html
+ * http://dr-magic.blogspot.ru/2010/01/hibernate-5.html
+ * https://easyjava.ru/data/hibernate/keshirovanie-v-hibernate/
+ *
+ * == @Cache vs @Cacheable
+ * == !!! these annotations exist in JPA, Spring, Hibernate. Be careful in choice and read articles !!!
+ * http://www.rapidprogramming.com/questions-answers/difference-between-cache-and-cacheable-in-jpacache-vs-cacheable-1657
+ *
  *
  * EntityManager lifecycle
  * https://openjpa.apache.org/builds/1.2.3/apache-openjpa/docs/jpa_overview_em_lifecycle.html
  *
+ * == EntityManager @ Transactional, EntityManager proxy, Transaction Aspect, Transaction Manager
+ * == @PersistenceContext(type = PersistenceContextType.TRANSACTIONAL)
+ * == @PersistenceContext(type = PersistenceContextType.EXTENDED)
+ * http://akorsa.ru/2016/08/kak-na-samom-dele-rabotaet-transactional-spring/
+ * http://blog.jhades.org/how-does-spring-transactional-really-work/
+ * http://stackoverflow.com/questions/2547817/what-is-the-difference-between-transaction-scoped-persistence-context-and-extend
+ * http://akorsa.ru/2016/10/strategii-zagruzki-grafa-obektov-v-jpa-chast-1/
+ * http://www.k-press.ru/cs/2010/1/tsymbal/tsymbal.asp
+ * == Open session in vew
+ * https://developer.jboss.org/wiki/OpenSessionInView
+ * http://initialize.ru/lazy-init-ili-open-session-in-view/
+ * http://javatalks.ru/topics/29927?page=1#150420
+ *
+ * Session Beans, Stateless, Stateful
+ * http://devcolibri.com/2044
+ * http://www.intuit.ru/studies/courses/571/427/lecture/9707
+ *
  * Java Best Practices
  * https://www.javacodegeeks.com/2010/07/java-best-practices-dateformat-in.html
+ *
+ * Methods overrides
+ * http://www.quizful.net/interview/java/redefine-(override)-method
+ * http://www.quizful.net/post/java-exceptions
+ *
+ * Spring MVC
+ * http://www.ibm.com/developerworks/ru/library/wa-restful/
+ * http://javastudy.ru/spring-mvc/spring-mvc-basic/
+ * http://javastudy.ru/spring-mvc/spring-mvc-viewresolver/
+ * http://javastudy.ru/spring-mvc/spring-mvc-webapplicationcontext/
+ * http://javastudy.ru/spring-mvc/spring-mvc-handler-mapping/
+ *
  *
  */
 public class Summary {

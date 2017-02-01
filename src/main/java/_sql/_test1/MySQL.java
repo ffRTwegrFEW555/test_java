@@ -23,15 +23,6 @@ public class MySQL {
 
     //
     public static void main(String[] args) {
-
-        //
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        //
         try (   Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
                 Statement statement = connection.createStatement()) {
 
@@ -45,6 +36,21 @@ public class MySQL {
             // === executeQuery
             // ResultSet resultSet = statement.executeQuery("SELECT * FROM user");
             // System.out.println(resultSet);
+
+            // === Example
+            // while(resultSet.next()) {
+            //    String name = resultSet.getString;
+            //    int age = resultSet.getInt;
+            //    BigDecimal bd = resultSet.getBigDecimal;
+            // }
+
+            // === Example
+            // while(resultSet.next()){
+            //    for (int i = 1; i <= columns; i++){
+            //        System.out.print(resultSet.getString(i) + "\t");
+            //    }
+            //    System.out.println();
+            // }
 
             // === executeBatch
             statement.addBatch("INSERT INTO user (name, age, isAdmin) values ('test', 777, true)");
