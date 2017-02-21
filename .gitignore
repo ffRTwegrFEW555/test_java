@@ -1,5 +1,6 @@
-### Java template
+#
 out
 target
+log
 .idea
 *.iml
