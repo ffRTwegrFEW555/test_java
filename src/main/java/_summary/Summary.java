@@ -1,6 +1,11 @@
 package _summary;
 
+import java.lang.reflect.Modifier;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -94,6 +99,7 @@ import java.util.regex.Pattern;
  * https://habrahabr.ru/post/77382/ -- полезное
  * http://devcolibri.com/1043 -- полезное
  * http://www.apache-maven.ru/lifecycle.html -- полезное
+ * https://jsehelper.blogspot.ru/2016/05/maven-2.html
  * <p>
  * http://repo1.maven.org/maven2/ -- репозиторий библиотек
  * http://repo.maven.apache.org/maven2/ -- тоже самое вроде
@@ -352,6 +358,7 @@ import java.util.regex.Pattern;
  * https://www.youtube.com/watch?v=M4ODqY1hgUY
  * https://tproger.ru/digest/enterprise-junior/
  * http://www.javadeathmatch.com
+ * http://javastudy.ru/interview/jee-spring-questions-answers/
  *
  * agile
  * https://habrahabr.ru/company/edison/blog/313410/
@@ -372,10 +379,20 @@ import java.util.regex.Pattern;
  * https://regex101.com
  *
  * SSH
+ * f:\home_dir\vadim\java\books_and_tips\debian\
  * https://www.opennet.ru/base/sec/ssh_intro.txt.html
  * https://toster.ru/q/349216
  * https://ru.wikipedia.org/wiki/%D0%9E%D0%B4%D0%BD%D0%BE%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D1%8F%D1%8F_%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F
  * https://ru.wikipedia.org/wiki/%D0%9A%D1%80%D0%B8%D0%BF%D1%82%D0%BE%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D1%81_%D0%BE%D1%82%D0%BA%D1%80%D1%8B%D1%82%D1%8B%D0%BC_%D0%BA%D0%BB%D1%8E%D1%87%D0%BE%D0%BC
+ * http://bog.pp.ru/work/ssh.html
+ * https://rfc2.ru/4251.rfc
+ *
+ * SSL
+ * https://tls.dxdt.ru/tls.html
+ *
+ * Protocol, technical specification, standards
+ * Протоколы, технические спецификации, стандарты
+ * https://rfc2.ru/
  *
  * Hibernate
  * @ Embeddable
@@ -433,21 +450,73 @@ import java.util.regex.Pattern;
  * http://javastudy.ru/spring-mvc/spring-mvc-webapplicationcontext/
  * http://javastudy.ru/spring-mvc/spring-mvc-handler-mapping/
  *
+ * SessionAttribute vs HttpSession
+ * http://stackoverflow.com/questions/27191798/spring-sessionattributes-vs-httpsession
+ *
+ * REST
+ * http://www.restapitutorial.ru/lessons/httpmethods.html
+ * https://habrahabr.ru/post/38730/
+ * https://habrahabr.ru/company/dataart/blog/277419/
+ * https://jazzteam.org/ru/profitable/restful-services-manual/
+ * https://spark.ru/startup/getmylinks/blog/5814/tak-li-nuzhen-rest-dlya-veb-prilozhenij
+ * https://habrahabr.ru/post/115718/
+ * -----------
+ * https://habrahabr.ru/post/144011/
+ * https://habrahabr.ru/post/144259/
+ * https://www.youtube.com/playlist?list=PLtDz82bWepMPLi_e9YbatLRpm0z4uOs_U
+ *
+ * HTTP
+ * http://www.4stud.info/web-programming/protocol-http.html
+ *
+ *
+ * JAX-RS (Java Api XML Rest Service)
+ * https://habrahabr.ru/post/140181/
+ *
+ * JPA Criteria multi where
+ * http://stackoverflow.com/questions/9321916/jpa-criteriabuilder-how-to-use-in-comparison-operator
+ * http://stackoverflow.com/questions/18226800/how-to-generate-a-predicate-array-of-or-statements
+ * http://stackoverflow.com/questions/29719321/combining-conditional-expressions-with-and-and-or-predicates-using-the-jpa-c
+ * http://stackoverflow.com/questions/11138118/really-dynamic-jpa-criteriabuilder
+ *
+ * OCP
+ * https://sybextestbanks.wiley.com/course/index/id/823
+ *
+ * Решето Аткина
+ * sieve of atkin explanation-and-java-example
+ * http://stackoverflow.com/questions/10580159/sieve-of-atkin-explanation-and-java-example
+ * 15485863
+ *
+ * Authentication
+ * https://habrahabr.ru/company/dataart/blog/262817/
+ * https://habrahabr.ru/company/dataart/blog/311376/
+ * https://habrahabr.ru/post/281406/
+ * https://ru.wikipedia.org/wiki/%D0%90%D1%83%D1%82%D0%B5%D0%BD%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8F_%D0%B2_%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%BD%D0%B5%D1%82%D0%B5
+ * HTTP BASIC
+ * http://samag.ru/archive/article/1631
+ * HTTP Digest
+ * http://samag.ru/archive/article/567
+ *
+ * AOT and JIT compilation
+ * https://www.youtube.com/watch?v=oYu3HuIYDhI
+ * http://www.ibm.com/developerworks/ru/library/j-jtp12214/
+ *
+ *
+ *
  *
  */
-public class Summary {
+public abstract class Summary {
 
     public static void main(String[] args) {
 
-        String line = "1000001001";
-        Pattern pattern = Pattern.compile("(?=1(0+)1)");
-        Matcher matcher = pattern.matcher(line);
+        long long_max = Long.MAX_VALUE; // result = 9223372036854775807;
 
-        while(matcher.find()) {
-            System.out.format("Text \"%s\" found at %d to %d.%n",
-                    matcher.group(), matcher.start(), matcher.end());
-            System.out.println(matcher.group(1));
-        }
+        long long_1 = Long.parseUnsignedLong("9223372036854775807"); // result = 9223372036854775807;
+        long long_2 = Long.parseUnsignedLong("9223372036854775808"); // result = -9223372036854775808;
+        long long_3 = Long.parseUnsignedLong("-1"); // result = NumberFormatException;
+
+        long long_4 = Long.parseLong("9223372036854775807"); // result = 9223372036854775807;
+        long long_5 = Long.parseLong("9223372036854775808"); // result = NumberFormatException;
+        long long_6 = Long.parseLong("-1"); // result = -1;
     }
 }
 
