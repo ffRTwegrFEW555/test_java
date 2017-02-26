@@ -500,7 +500,25 @@ import java.util.regex.Pattern;
  * https://www.youtube.com/watch?v=oYu3HuIYDhI
  * http://www.ibm.com/developerworks/ru/library/j-jtp12214/
  *
+ * Spring cache
+ * http://nikcode.blogspot.ru/2012/12/spring-cache.html
  *
+ * Spring
+ * http://www.dataart.ru/blog/2014/04/malen-kie-sekrety-spring/
+ * BaseUtils.java (BeanDefinition -> Bean)
+ *
+ * Hash
+ * http://www.openwall.com/presentations/YaC2012-Password-Hashing-At-Scale/mgp00001.html
+ *
+ * Правило ограничения домена
+ * Принцип одинакового источника
+ * Same Origin Policy
+ * http://javascript.ru/forum/events/42105-podklyuchenie-skripta-s-drugogo-domena.html
+ *
+ * Кросс-доменный скриптинг
+ * cross-domain-scripting
+ * http://javascript.ru/ajax/cross-domain-scripting
+ * https://learn.javascript.ru/xhr-crossdomain
  *
  *
  */
