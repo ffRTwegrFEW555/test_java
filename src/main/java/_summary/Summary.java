@@ -520,6 +520,10 @@ import java.util.regex.Pattern;
  * http://javascript.ru/ajax/cross-domain-scripting
  * https://learn.javascript.ru/xhr-crossdomain
  *
+ * X.509
+ * http://pro-ldap.ru/tr/zytrax/tech/ssl.html#x509-overview
+ * https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82_%D0%BE%D1%82%D0%BA%D1%80%D1%8B%D1%82%D0%BE%D0%B3%D0%BE_%D0%BA%D0%BB%D1%8E%D1%87%D0%B0
+ *
  *
  */
 public abstract class Summary {
