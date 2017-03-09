@@ -9,5 +9,14 @@ public class MathTest {
         System.out.println("Math.PI: " + Math.PI);
 
         System.out.println(Math.ceil(1.1));
+
+
+        //
+        double z = 1;
+
+        System.out.println((int)(z / 0));
+        System.out.println((short)(z / 0));
+
+
     }
 }

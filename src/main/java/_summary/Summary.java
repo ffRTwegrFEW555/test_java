@@ -1,12 +1,10 @@
 package _summary;
 
+import java.io.*;
 import java.lang.reflect.Modifier;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -410,6 +408,7 @@ import java.util.regex.Pattern;
  * http://dr-magic.blogspot.ru/2010/01/hibernate-4.html
  * http://dr-magic.blogspot.ru/2010/01/hibernate-5.html
  * https://easyjava.ru/data/hibernate/keshirovanie-v-hibernate/
+ * https://habrahabr.ru/search/?q=%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D1%8F+%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D0%B0+Hibernate#h
  *
  * == @Cache vs @Cacheable
  * == !!! these annotations exist in JPA, Spring, Hibernate. Be careful in choice and read articles !!!
@@ -418,6 +417,7 @@ import java.util.regex.Pattern;
  *
  * EntityManager lifecycle
  * https://openjpa.apache.org/builds/1.2.3/apache-openjpa/docs/jpa_overview_em_lifecycle.html
+ * https://easyjava.ru/data/jpa/jpa-entitymanager-upravlyaem-sushhnostyami/
  *
  * == EntityManager @ Transactional, EntityManager proxy, Transaction Aspect, Transaction Manager
  * == @PersistenceContext(type = PersistenceContextType.TRANSACTIONAL)
@@ -524,22 +524,38 @@ import java.util.regex.Pattern;
  * http://pro-ldap.ru/tr/zytrax/tech/ssl.html#x509-overview
  * https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82_%D0%BE%D1%82%D0%BA%D1%80%D1%8B%D1%82%D0%BE%D0%B3%D0%BE_%D0%BA%D0%BB%D1%8E%D1%87%D0%B0
  *
+ * Java features
+ * https://m.habrahabr.ru/post/253787/
+ *
+ * Архитектура компьютера
+ * https://m.habrahabr.ru/post/306982/
+ *
+ * Test tasks
+ * https://drive.google.com/drive/folders/0B1TmSF1-jkXyZU9EeldnOWNlalk
+ * http://bytefreaks.net/google/practice-problem-for-google-hash-code-2017
+ *
+ * StAX and another parsers and creators
+ * https://www.tutorialspoint.com/java_xml/java_stax_create_document.htm
+ *
+ * SOLID
+ * http://info.javarush.ru/translation/2013/08/06/%D0%9F%D1%8F%D1%82%D1%8C-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D1%85-%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF%D0%BE%D0%B2-%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%D0%B0-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2-S-O-L-I-D-%D0%B2-Java.html
+ *
+ * Dependency inversion
+ * Инверсия зависимостей
+ * https://dev64.wordpress.com/2013/05/14/dependency-inversion/
+ *
+ * Снизу ссылки
+ * https://yandex.ru/jobs/internship/
  *
  */
-public abstract class Summary {
+class Summary {
 
     public static void main(String[] args) {
 
-        long long_max = Long.MAX_VALUE; // result = 9223372036854775807;
+        System.out.println((byte)128);
 
-        long long_1 = Long.parseUnsignedLong("9223372036854775807"); // result = 9223372036854775807;
-        long long_2 = Long.parseUnsignedLong("9223372036854775808"); // result = -9223372036854775808;
-        long long_3 = Long.parseUnsignedLong("-1"); // result = NumberFormatException;
-
-        long long_4 = Long.parseLong("9223372036854775807"); // result = 9223372036854775807;
-        long long_5 = Long.parseLong("9223372036854775808"); // result = NumberFormatException;
-        long long_6 = Long.parseLong("-1"); // result = -1;
     }
+
 }
 
 
