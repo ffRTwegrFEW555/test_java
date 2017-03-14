@@ -547,15 +547,19 @@ import java.util.regex.Pattern;
  * Снизу ссылки
  * https://yandex.ru/jobs/internship/
  *
+ * Variable naming and syntax conventions for Java
+ * http://www.n0sl33p.org/dev/java_naming.html
+ *
  */
 class Summary {
 
+    public static final char CHAR = '9';
+
     public static void main(String[] args) {
-
-        System.out.println((byte)128);
-
+        char c = Summary.CHAR;
+        int i = c - '0';
+        System.out.println(i);
     }
-
 }
 
 

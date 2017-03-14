@@ -10,20 +10,22 @@ import java.sql.SQLException;
  * @author Vadim Gamaliev <a href="mailto:gamaliev-vadim@yandex.com">gamaliev-vadim@yandex.com</a>
  * @version 1.0
  */
-public class DBUtil {
+final class DBUtil {
 
-    private final static String DB_URL  =
+    private static final String DB_URL  =
                     "jdbc:mysql://localhost:3306/test" +
                     "?autoReconnect=true" +
                     "&useSSL=false" /*+
                     "&useJDBCCompliantTimezoneShift=true" +
                     "&useLegacyDatetimeCode=false" +
                     "&serverTimezone=UTC"*/;
-    private final static String DB_USER = "root";
-    private final static String DB_PASS = "root";
+    private static final String DB_USER = "root";
+    private static final String DB_PASS = "root";
     private static Connection connection;
 
-    private DBUtil() {}
+    private DBUtil() {
+
+    }
 
     public static Connection getConnection() {
         if (connection == null) {
