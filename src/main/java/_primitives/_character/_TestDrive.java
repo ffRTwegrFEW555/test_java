@@ -1,4 +1,4 @@
-package _primitives.character;
+package _primitives._character;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;

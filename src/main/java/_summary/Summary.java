@@ -1,5 +1,7 @@
 package _summary;
 
+import _summary.test.Test;
+
 import java.io.*;
 import java.lang.reflect.Modifier;
 import java.nio.charset.Charset;
@@ -550,15 +552,54 @@ import java.util.regex.Pattern;
  * Variable naming and syntax conventions for Java
  * http://www.n0sl33p.org/dev/java_naming.html
  *
+ * Unsafe
+ * unsafe-java.stuff.doc
+ * https://www.youtube.com/watch?v=moHNujaeD2I
+ * http://www.mantonov.com/2011/03/sunmiscunsafe-jvm.html
+ * http://anton-arhipov.livejournal.com/264843.html
+ *
+ * Sort
+ * http://sorting.at/
+ * https://www.toptal.com/developers/sorting-algorithms
+ *
+ *
  */
 class Summary {
-
-    public static final char CHAR = '9';
+    private String s = "one";
+    private int i = 56;
+    private long l = 10;
+    private float f = 12;
 
     public static void main(String[] args) {
-        char c = Summary.CHAR;
-        int i = c - '0';
-        System.out.println(i);
+
+        int i = 0;
+        float f = 0;
+        float myF = i / i;
+        System.out.println(myF);
+
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Summary summary = (Summary) o;
+
+        if (i != summary.i) return false;
+        if (l != summary.l) return false;
+        if (Float.compare(summary.f, f) != 0) return false;
+        return s != null ? s.equals(summary.s) : summary.s == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = s != null ? s.hashCode() : 0;
+        result = 31 * result + i;
+        result = 31 * result + (int) (l ^ (l >>> 32));
+        result = 31 * result + (f != +0.0f ? Float.floatToIntBits(f) : 0);
+        return result;
     }
 }
 
