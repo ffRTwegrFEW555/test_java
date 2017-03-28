@@ -562,6 +562,20 @@ import java.util.regex.Pattern;
  * http://sorting.at/
  * https://www.toptal.com/developers/sorting-algorithms
  *
+ * SPF, DKIM, DMARC
+ * https://securelist.ru/analysis/obzor/25010/texnologiya-dkim-na-strazhe-vashej-pochty/
+ * https://interface31.ru/tech_it/2013/10/pochtovyy-server-dlya-nachinayushhih-ptr-i-spf-zapisi-kak-sredstvo-bor-by-so-spamom.html
+ * https://habrahabr.ru/company/mailru/blog/282602/
+ *
+ *
+ * Задачи для собеседований:
+ * https://tproger.ru/articles/problems/
+ *
+ * JavaCode to ByteCode !!!!!! crazy
+ * http://blog.jamesdbloom.com/JavaCodeToByteCode_PartOne.html
+ *
+ * Cookie
+ * http://citforum.ru/internet/html/cookie.shtml
  *
  */
 class Summary {
@@ -572,13 +586,14 @@ class Summary {
 
     public static void main(String[] args) {
 
-        int i = 0;
-        float f = 0;
-        float myF = i / i;
-        System.out.println(myF);
+        for (final int i : new int[] {1, 2, 3}) {
+            System.out.println(i);
+        }
+
 
 
     }
+
 
     @Override
     public boolean equals(Object o) {
