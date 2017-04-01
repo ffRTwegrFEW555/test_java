@@ -29,5 +29,16 @@ public class TestDrive {
         System.out.println(i2.length);
         System.out.println(i2[0].length);
         System.out.println(i2[1].length);
+
+
+        ////    ////    ////    ////    ////    ////
+
+        int i[]     = new int[4];
+        int[] i3    = new int[4];
+        int [] i4   = new int[4];
+        int []i5    = new int[4];
+        int[] i6[]  = new int[4][4];
+
+
     }
 }

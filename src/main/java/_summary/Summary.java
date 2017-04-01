@@ -577,6 +577,25 @@ import java.util.regex.Pattern;
  * Cookie
  * http://citforum.ru/internet/html/cookie.shtml
  *
+ * Препроцессоры. Обработка аннотаций на этапе компиляции
+ * https://habrahabr.ru/company/e-Legion/blog/206208/
+ * https://habrahabr.ru/post/200878/
+ *
+ * RISC, CISC
+ * http://all-ht.ru/inf/pc/cp_struct.html (saved)
+ * https://www.youtube.com/watch?v=_0HFB44Xntc
+ * https://otvet.mail.ru/question/82386023
+ * https://otvet.mail.ru/question/84092636
+ *
+ * ARM
+ * https://ru.wikipedia.org/wiki/ARM_(%D0%B0%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0)#.D0.90.D1.80.D1.85.D0.B8.D1.82.D0.B5.D0.BA.D1.82.D1.83.D1.80.D0.B0
+ *
+ * Устройство процессора, processor
+ * http://all-ht.ru/inf/pc/cp_struct.html (saved)
+ *
+ * Материнская плата, motherboard
+ * http://all-ht.ru/inf/pc/mp_struct.html (saved)
+ *
  */
 class Summary {
     private String s = "one";
@@ -590,9 +609,30 @@ class Summary {
             System.out.println(i);
         }
 
+        String a = "test";
+        String b = "test";
+        System.out.println(a == b);
 
+        a = a + "1";
+        b = b + "1";
+        System.out.println(a == b);
+
+        System.out.println(0.0 / 0.0);
+
+        switch(1) {
+            default:
+                System.out.println("default");
+            case 1:
+                System.out.println("1");
+            case 2:
+                System.out.println("2");
+        }
+
+        throw new RuntimeException();
 
     }
+
+    public static void test() {}
 
 
     @Override
