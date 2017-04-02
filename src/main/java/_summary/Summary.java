@@ -573,6 +573,7 @@ import java.util.regex.Pattern;
  *
  * JavaCode to ByteCode !!!!!! crazy
  * http://blog.jamesdbloom.com/JavaCodeToByteCode_PartOne.html
+ * http://blog.jamesdbloom.com/JVMInternals.html
  *
  * Cookie
  * http://citforum.ru/internet/html/cookie.shtml
@@ -595,6 +596,24 @@ import java.util.regex.Pattern;
  *
  * Материнская плата, motherboard
  * http://all-ht.ru/inf/pc/mp_struct.html (saved)
+ *
+ * Garbage collector (GC). Уборщик мусора
+ * https://habrahabr.ru/post/269621/
+ * https://habrahabr.ru/post/269707/
+ * https://habrahabr.ru/post/269863/
+ * https://habrahabr.ru/post/154089/
+ * http://ggenikus.github.io/blog/2014/05/04/gc/
+ *
+ * JMM, HEAP, JVM
+ * http://www.journaldev.com/2856/java-jvm-memory-model-memory-management-in-java
+ * https://shipilev.net/#jmm
+ * http://stackoverflow.com/questions/1262328/how-is-the-java-memory-pool-divided
+ * https://abhirockzz.wordpress.com/2014/09/06/jvm-permgen-where-art-thou/
+ * http://blog.jamesdbloom.com/JVMInternals.html
+ *
+ * Memory leaks
+ * https://www.slideshare.net/kslisenko/jvm-35760825
+ *
  *
  */
 class Summary {
@@ -626,6 +645,15 @@ class Summary {
                 System.out.println("1");
             case 2:
                 System.out.println("2");
+        }
+
+        try {
+            Summary sum = new Summary();
+            System.out.println(sum);
+            BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println(bf.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         throw new RuntimeException();
