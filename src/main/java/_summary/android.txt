@@ -1,9 +1,0 @@
-= Курсы
-==== https://tproger.ru/translations/how-to-start-android/
-
-= Security
-==== https://www.youtube.com/watch?v=6Xj54AdvSls
-
-= Школа мобильной разработки (School of mobile development)
-==== https://www.youtube.com/playlist?list=PLQC2_0cDcSKBNCR8UWeElzCUuFkXASduz
-

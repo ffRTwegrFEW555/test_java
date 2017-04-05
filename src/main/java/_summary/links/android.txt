@@ -1,0 +1,48 @@
+
+- All
+http://developer.alexanderklimov.ru/android/theory/
+
+- Курсы
+https://tproger.ru/translations/how-to-start-android/
+
+- Security
+https://www.youtube.com/watch?v=6Xj54AdvSls
+
+- Школа мобильной разработки (School of mobile development)
+https://www.youtube.com/playlist?list=PLQC2_0cDcSKBNCR8UWeElzCUuFkXASduz
+
+- LifeCycle
+https://www.slideshare.net/htcandroidua/android-4155274
+http://developer.alexanderklimov.ru/android/theory/lifecycle.php
+https://metanit.com/java/android/2.1.php
+https://codentrick.com/android-view-lifecycle/
+https://developer.android.com/reference/android/view/View.html
+
+- Preprocessors
+https://habrahabr.ru/post/200878/
+https://habrahabr.ru/company/e-Legion/blog/206208/
+
+- Background tasks: Service, Handler, AsyncTask, Timer, ScheduledThreadPoolExecutor
+https://habrahabr.ru/post/136942/
+
+- class Application
+http://ru-code-android.livejournal.com/4594.html
+http://src-code.net/metody-zhiznennogo-cikla-klassa-application/
+http://blog-yakivmospan.rhcloud.com/best-practices-for-application/
+
+- onTrimMemory()
+http://prog3.com/sbdm/blog/zhoaya188/article/details/49157055
+
+- Custom View, ViewGroup
+https://habrahabr.ru/post/191586/
+https://habrahabr.ru/post/191842/
+http://stacktips.com/tutorials/android/how-to-create-custom-layout-in-android-by-extending-viewgroup-class
+http://stacktips.com/tutorials/android/creating-custom-views-in-android-tutorial
+http://www.vogella.com/tutorials/AndroidTouch/article.html#singletouch
+https://developer.android.com/reference/android/view/ViewGroup.html
+https://developer.android.com/training/custom-views/index.html
+https://developer.android.com/guide/topics/ui/custom-components.html
+https://realm.io/news/360andev-huyen-tue-dao-measure-layout-draw-repeat-custom-views-and-viewgroups-android/
+https://www.youtube.com/watch?v=ktbYUrlN_Ws
+https://www.youtube.com/watch?v=S2YojyVhZcY
+
