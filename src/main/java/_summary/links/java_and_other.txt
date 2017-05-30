@@ -598,6 +598,7 @@
  * http://stackoverflow.com/questions/1262328/how-is-the-java-memory-pool-divided
  * https://abhirockzz.wordpress.com/2014/09/06/jvm-permgen-where-art-thou/
  * http://blog.jamesdbloom.com/JVMInternals.html
+ * http://www.javaspecialist.ru/2011/06/java-memory-model.html
  *
  * Memory leaks
  * https://www.slideshare.net/kslisenko/jvm-35760825

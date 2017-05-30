@@ -46,3 +46,6 @@ https://realm.io/news/360andev-huyen-tue-dao-measure-layout-draw-repeat-custom-v
 https://www.youtube.com/watch?v=ktbYUrlN_Ws
 https://www.youtube.com/watch?v=S2YojyVhZcY
 
+- Fragment, State
+https://inthecheesefactory.com/blog/fragment-state-saving-best-practices/en
+
